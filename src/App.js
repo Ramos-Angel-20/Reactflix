@@ -1,6 +1,15 @@
 const App = () => {
   return (
-    <div>Reactflix</div>    
+    <>
+      <nav>
+        <div className='container'>
+          <h1>Reactflix</h1>
+        </div>
+      </nav>
+
+      
+      <p>dfqwfqwfqwdqfqwfwqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</p>
+    </>
   );
 }
 
