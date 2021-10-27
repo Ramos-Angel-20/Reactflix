@@ -1,13 +1,37 @@
 .navbar {
-    background-color: black;
+    background-image: url('../../assets/4839516.jpg');
+    height: 8rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    &::before {
+        content: '';
+        background-color: rgba(0,0,0,.7);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
     &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+        height: 100%;
 
         & h1 {
             @include reactflix-title;
+            position: relative;
+            font-size: 6rem;
+            text-shadow: 1px 1px 0px #fff;
+
         }
 
 
@@ -15,7 +39,7 @@
             display: none;
         }
 
-        @media screen and (min-width: 768px) {
+        @include tablet {
             &__desktop-logo {
                 display: block;
             }
@@ -50,5 +74,11 @@
                 font-size: 1.6rem;
             }
         }
+    }
+}
+
+@include tablet {
+    .navbar {
+        height: 20rem;
     }
 }

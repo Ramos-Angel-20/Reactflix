@@ -5,24 +5,33 @@ const tmdbAPI = axios.create({
 });
 
 
-// export const getGenres = async () => {
-//     try {
-//         const response = await tmdbAPI.get(`/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+export const getGenres = async () => {
+    
+    const requestConfig = {
+        method: 'GET',
+        url: '/genre/movie/list',
+        params: {
+            api_key: process.env.REACT_APP_API_KEY,
+            language: 'en-US'
+        }
+    };
 
-//         if (response.status !== 200) {
-//             throw new Error('Something went wrong requesting the genres');
-//         }
+    try {
+        const response = await tmdbAPI.request(requestConfig);
 
-//         const result = response.data.genres;
-//         return result;
+        if (response.status !== 200) {
+            throw new Error('Something went wrong requesting the genres');
+        }
 
-//     } catch (error) {
-//         return error.message;
-//     }
-// }
+        const result = response.data.genres;
+        return result;
 
+    } catch (error) {
+        return error.message;
+    }
+}
 
-export const searchMovies = async (query = '', page, includeAdult = false, primaryReleaseYear = null) => {
+export const searchMoviesByName = async (query = '', page, includeAdult = false, primaryReleaseYear = null) => {
 
     const requestConfig = {
         method: 'GET',
@@ -41,7 +50,7 @@ export const searchMovies = async (query = '', page, includeAdult = false, prima
         const response = await tmdbAPI.request(requestConfig);
 
         if (response.status !== 200) {
-            throw new Error('Something went wrong requesting the genres');
+            throw new Error('Something went wrong requesting the movies by his name');
         }
 
         const result = response.data.results;
@@ -53,8 +62,7 @@ export const searchMovies = async (query = '', page, includeAdult = false, prima
 }
 
 export const getMoviesByGenre = async (genre = '') => {
-    // genre must be a integer
-
+    // genre debe ser un entero
 
     const requestConfig = {
         method: 'GET',
@@ -70,7 +78,7 @@ export const getMoviesByGenre = async (genre = '') => {
         const response = await tmdbAPI.request(requestConfig);
 
         if (response.status !== 200) {
-            throw new Error('Something went wrong requesting the genres');
+            throw new Error('Something went wrong requesting the movies by genre');
         }
 
         const result = response.data.results;
@@ -78,5 +86,34 @@ export const getMoviesByGenre = async (genre = '') => {
 
     } catch (error) {
         return error.message;
+    }
+}
+
+export const getTrendingMedia = async (typeofMedia, timeWindow) => {
+    // typeofMedia debe ser 'all', 'movie', 'tv' o 'person'.
+    // timeWindow debe ser 'day' o 'week'.
+    
+    const requestConfig = {
+        method: 'GET',
+        url: `/trending/${typeofMedia}/${timeWindow}`,
+        params: {
+            api_key: process.env.REACT_APP_API_KEY,
+            language: 'en-US'
+        }
+    };
+
+    try {
+        
+        const response = await tmdbAPI.request(requestConfig);
+
+        if (response.status !== 200) {
+            throw new Error('Something went wrong requesting trending media');
+        }
+
+        const result = response.data.results;
+        return result;
+
+    } catch (error) {
+        console.log(error);
     }
 }
