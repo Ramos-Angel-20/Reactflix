@@ -1,14 +1,25 @@
+import { useEffect } from 'react';
+
+import Navbar from './components/Navbar';
+
+import { searchMovies, getMoviesByGenre } from './services/tmdbApiService';
+
 const App = () => {
+  
+  useEffect(() => {
+    getMoviesByGenre(18).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+    
+
+
+  }, []);
+
   return (
     <>
-      <nav>
-        <div className='container'>
-          <h1>Reactflix</h1>
-        </div>
-      </nav>
-
-      
-      <p>dfqwfqwfqwdqfqwfwqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</p>
+      <Navbar />
     </>
   );
 }

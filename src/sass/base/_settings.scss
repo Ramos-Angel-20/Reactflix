@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@800&family=Rubik&display=swap');
+
+:root {
+    --app-name-font-family: 'Bebas Neue', cursive;
+    --title-font-family: 'Fira Sans', sans-serif;
+    --text-font-family: 'Rubik', sans-serif;
+
+    --container-background-color: #383838;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.6rem;
+    min-height: 100vh;
+    background-color: #131313;
+    color: #fff;
+}
+
+h1 {
+    font-family: var(--app-name-font-family);
+    font-size: 4.5rem;
+}
+
+h2 {
+    font-family: var(--title-font-family);
+    font-size: 5rem;
+}
+
+p {
+    font-family: var(--text-font-family);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+@mixin reactflix-title {
+    color: red;
+    letter-spacing: 2px;
+}
+
+@mixin btn {
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
